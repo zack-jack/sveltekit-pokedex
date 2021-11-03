@@ -31,7 +31,7 @@ export default class Pokemon {
 			id: i + 1,
 			name,
 			url,
-			image: `${this.imagePath}/${i + 1}.png`
+			imageSrc: `${this.imagePath}/${i + 1}.png`
 		}));
 
 		return Promise.resolve(loadedPokemon);
