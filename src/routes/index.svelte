@@ -12,8 +12,9 @@
 	<title>Home | Sveltekit Pokedex</title>
 </svelte:head>
 
-<h1>SvelteKit Pokedex</h1>
-
-{#each $pokemonArr as { name }}
-	<p>{name}</p>
-{/each}
+<h1 class="text-4xl text-center uppercase">SvelteKit Pokedex</h1>
+<div class="mt-8">
+	{#each $pokemonArr as { name }}
+		<p>{name}</p>
+	{/each}
+</div>
