@@ -18,7 +18,7 @@ export default class Pokemon {
 	/**
 	 * Fetch all pokemon numbered 1 to upperLimit
 	 * @param {Number} upperLimit limit upper bounds
-	 * @returns {Promise<Object>} - Array of pokemon objects
+	 * @returns {Promise<Array>} - Array of pokemon objects
 	 */
 	async pokemonGetAll(upperLimit = 150) {
 		const { results } = await get(`${this.api}/api/v2/pokemon?limit=${upperLimit}`, {}, {});
@@ -35,5 +35,20 @@ export default class Pokemon {
 		}));
 
 		return Promise.resolve(loadedPokemon);
+	}
+
+	/**
+	 * Fetch pokemon by id
+	 * @param {String} id id of the pokemon to fetch
+	 * @returns {Promise<Object>} - Array of pokemon objects
+	 */
+	async pokemonGetById(id) {
+		const pokemon = await get(`${this.api}/api/v2/pokemon/${id}`, {}, {});
+
+		if (!pokemon) {
+			return Promise.resolve({});
+		}
+
+		return Promise.resolve(pokemon);
 	}
 }
