@@ -1,23 +1,27 @@
+<script context="module">
+	import { pokemonGetAll } from '../api/pokemon';
+
+	export async function load() {
+		const pokemonArr = await pokemonGetAll();
+
+		return { props: { pokemonArr } };
+	}
+</script>
+
 <script>
-	import { onMount } from 'svelte';
-	import { pokemonArr, pokemonGetAll } from '../stores/pokestore';
 	import PokemonCard from '../components/pokemonCard.svelte';
 
+	export let pokemonArr;
 	let searchTerm = '';
 	let filteredPokemon = [];
 
-	onMount(async () => {
-		console.log("Gotta catch 'em all!");
-		await pokemonGetAll();
-	});
-
 	$: {
 		if (searchTerm) {
-			filteredPokemon = [...$pokemonArr].filter(({ name }) =>
+			filteredPokemon = [...pokemonArr].filter(({ name }) =>
 				name.toLowerCase().includes(searchTerm.toLowerCase())
 			);
 		} else {
-			filteredPokemon = [...$pokemonArr];
+			filteredPokemon = [...pokemonArr];
 		}
 	}
 </script>

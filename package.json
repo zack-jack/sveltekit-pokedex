@@ -20,7 +20,5 @@
 		"tailwindcss": "^2.2.19"
 	},
 	"type": "module",
-	"dependencies": {
-		"axios": "^0.24.0"
-	}
+	"dependencies": {}
 }
